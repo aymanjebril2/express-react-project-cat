@@ -16,6 +16,8 @@ const GetAllCat = ({
   setDeletCat,
   setCat,
   updating,
+  setUpdating,
+  afterUpdate,
 }) => {
   const classes = useStyles();
   const [cats, setCats] = useState([]);
@@ -28,7 +30,7 @@ const GetAllCat = ({
 
   useEffect(() => {
     fetchAllCat();
-  }, [createNewCat, deletCat, updating]);
+  }, [createNewCat, deletCat, updating, afterUpdate]);
 
   return (
     <div className={classes.rootCardDiv}>
@@ -38,6 +40,7 @@ const GetAllCat = ({
           {...item}
           setDeletCat={setDeletCat}
           setCat={setCat}
+          setUpdating={setUpdating}
         />
       ))}
     </div>

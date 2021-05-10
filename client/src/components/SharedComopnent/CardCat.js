@@ -16,7 +16,15 @@ const useStyles = makeStyles({
   },
 });
 
-const CardCat = ({ _id, name, imagelink, biography, setDeletCat, setCat }) => {
+const CardCat = ({
+  _id,
+  name,
+  imagelink,
+  biography,
+  setDeletCat,
+  setCat,
+  setUpdating,
+}) => {
   const classes = useStyles();
 
   const deletingCat = async () => {
@@ -30,6 +38,7 @@ const CardCat = ({ _id, name, imagelink, biography, setDeletCat, setCat }) => {
   const updatingCat = async () => {
     const response = await axios.get(`http://localhost:5000/api/cats/${_id}`);
     setCat(response.data);
+    setUpdating(true);
   };
 
   return (

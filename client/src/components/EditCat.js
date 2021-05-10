@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FormCat from "./SharedComopnent/FormCat";
 
-const EditCat = ({ cat, setCat, setUpdating }) => {
+const EditCat = ({ cat, setCat, setUpdating, setAfterUpdate }) => {
   console.log(cat._id);
 
   const handleChange = (event) => {
@@ -23,6 +23,7 @@ const EditCat = ({ cat, setCat, setUpdating }) => {
       .then((res) => {
         console.log(res);
         setUpdating(true);
+        setAfterUpdate(true);
       })
       .catch((err) => console.log(err));
   };

@@ -13,16 +13,23 @@ function App() {
     biography: "",
   });
   const [updating, setUpdating] = useState(false);
-
   const [createNewCat, setCreateNewCat] = useState(false);
   const [deletCat, setDeletCat] = useState(false);
+  const [afterUpdate, setAfterUpdate] = useState(false);
 
   return (
     <div className="App">
       <Header />
-      {cat && (
-          <EditCat cat={cat} setCat={setCat} setUpdating={setUpdating} />
-        ) && <CreateCat setCreateNewCat={setCreateNewCat} />}
+      {updating ? (
+        <EditCat
+          cat={cat}
+          setCat={setCat}
+          setUpdating={setUpdating}
+          setAfterUpdate={setAfterUpdate}
+        />
+      ) : (
+        <CreateCat setCreateNewCat={setCreateNewCat} />
+      )}
 
       <GetAllCat
         updating={updating}
@@ -30,6 +37,8 @@ function App() {
         createNewCat={createNewCat}
         setDeletCat={setDeletCat}
         deletCat={deletCat}
+        setUpdating={setUpdating}
+        afterUpdate={afterUpdate}
       />
     </div>
   );
